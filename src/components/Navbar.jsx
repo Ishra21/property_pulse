@@ -226,40 +226,40 @@ dispatch(logOutUser())
         </div>
       </div>
 
-      {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-      <div className={menuOpen ? "block md:hidden" : "hidden"} id="mobile-menu">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          <Link
-            to="/"
-            className={pathname === "/" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
-          >
-            Home
-          </Link>
-          <Link
-            to="/properties"
-            className={pathname === "/properties" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
-          >
-            Properties
-          </Link>
-          <Link
-            to="/add-property"
-            className={pathname === "/add-property" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}          >
-            Add Property
-          </Link>
-          <Link
-            to="/login"
-            className={pathname === "/login" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
-            className={pathname === "/register" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
-          >
-            Register
-          </Link>
+        {/* <!-- Mobile menu, show/hide based on menu state. --> */}
+        <div className={menuOpen ? "block md:hidden" : "hidden"} id="mobile-menu">
+          <div className="space-y-1 px-2 pb-3 pt-2">
+            <Link
+              to="/"
+              className={pathname === "/" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
+            >
+              Home
+            </Link>
+            <Link
+              to="/properties"
+              className={pathname === "/properties" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
+            >
+              Properties
+            </Link>
+            <Link
+              to="/add-property"
+              className={pathname === "/add-property" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}          >
+              Add Property
+            </Link>
+            <Link
+              to="/login"
+              className={pathname === "/login" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className={pathname === "/register" ? "text-gray-300 bg-black hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium" : "text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"}
+            >
+              Register
+            </Link>
+          </div>
         </div>
-      </div>
     </nav>
   );
 };

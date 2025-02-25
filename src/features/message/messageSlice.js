@@ -32,7 +32,7 @@ export const sendMessage = createAsyncThunk("ADD/MSGS", async(formData)=>{
     console.log(formData)
 })
 
-// /
+
 
 export const addProperty = createAsyncThunk("ADD/PROPERTY", async(formData) =>{
     console.log(formData)

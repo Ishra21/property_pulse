@@ -3,35 +3,47 @@ import PropertyFeatureCard from "../components/PropertyFeatureCard";
 import HeroSection from "../components/HeroSection";
 import FeaturedCard from "../components/FeaturedCard";
 import PropertyCard from "../components/PropertyCard";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import LoadingScreen from "../components/LoadingScreen";
+import { getProperties } from "../features/property/propertySlice";
 
 const Home = () => {
-  const { user, isError, isLoading, isSuccess, message } = useSelector(
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
+  const {
+    properties,
+    propertyLoading,
+    propertySuccess,
+    propertyError,
+    propertyErrorMessage,
+  } = useSelector((state) => state.property);
 
+  const featuredProperties = properties.filter(
+    (property) => property.is_featured
+  );
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-
-    // if (!user) {
-    //   navigate("/login")
-    // }
-    if (isError && message) {
-      toast.error(message, {
+    if ((isError && message) || (propertyError && propertyErrorMessage)) {
+      toast.error(message || propertyErrorMessage, {
         position: "bottom-center",
-        theme: "colored"
-      })
+        theme: "colored",
+      });
     }
-  }, [user, isError, message])
 
+    // Fetch Propertuies
+    dispatch(getProperties());
+  }, [user, isError, message]);
 
-if(isLoading) {
-    return <LoadingScreen/>
-}
+  if (isLoading || propertyLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <>
@@ -48,7 +60,7 @@ if(isLoading) {
               subHeading={
                 "Find your dream rental property. Bookmark properties and contact owners."
               }
-              buttonText={"BrowseProperties"}
+              buttonText={"Browse Properties"}
             />
             <PropertyFeatureCard
               role={"owners"}
@@ -70,8 +82,9 @@ if(isLoading) {
             Featured Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FeaturedCard />
-            <FeaturedCard />
+            {featuredProperties.map((property, index) => (
+              <FeaturedCard key={index} property={property} />
+            ))}
           </div>
         </div>
       </section>
@@ -84,12 +97,9 @@ if(isLoading) {
             Recent Properties
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <PropertyCard />
-            <PropertyCard />
-            <PropertyCard />
-            <PropertyCard />
-            <PropertyCard />
-            <PropertyCard />
+            {properties.map((property, index) => (
+              <PropertyCard key={index} property={property} />
+            ))}
           </div>
         </div>
       </section>
